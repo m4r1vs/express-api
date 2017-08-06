@@ -10,9 +10,9 @@
 const consoleLog = (text, color) => {
   const timestamp = new Date();
   const timestampStr = `[${
-        timestamp.getHours()}:${
-        timestamp.getMinutes()}:${
-        timestamp.getSeconds()}]`;
+    timestamp.getHours()}:${
+    timestamp.getMinutes()}:${
+    timestamp.getSeconds()}]`;
   console.log(`► \x1b[35m${timestampStr} \x1b[%sm%s\x1b[0m`, color, text);
 };
 

@@ -1,6 +1,6 @@
 const request = require('request');
 const helper = require('../../helpers');
-const config = require('../config.js');
+const config = require('../../../config.js');
 
 const getBalance = (req, res) => {
   /*

@@ -8,12 +8,29 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./src/routes.js');
 const helper = require('./src/helpers');
+const config = require('./config.js');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 61014;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Check if request is encrypted
+app.use('/', (req, res, next) => {
+  helper.log(`Checking HTTPS of ${req.method}`, 36);
+  if (req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] === "http") {
+    res.status(403).json("Please use HTTPS");
+  } else {
+    next();
+  }
+});
+
+app.use('/wallet/', (req, res, next) => {
+  helper.log('Checking AUTH...', 36);
+  if (req.query.token === config.general.token) next();
+  else res.status(401).json("Authentication is required");
+});
 
 // TODO: build some middleman to have less copypasta like so much helper.log
 
