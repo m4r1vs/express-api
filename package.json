@@ -1,0 +1,26 @@
+{
+  "name": "ManiYTde_REST_API",
+  "version": "0.1.0-alpha1",
+  "description": "The official API for my personal projects.",
+  "main": "server.js",
+  "author": "Marius Niveri",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.0.0 <9.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0",
+    "eslint": "^4.4.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  }
+}
