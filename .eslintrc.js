@@ -22,6 +22,11 @@ module.exports = {
         "terms": ["TODO","FIXME"],
         "location": "anywhere"
       }
+    ],
+    "no-plusplus": [
+      "error", {
+        "allowForLoopAfterthoughts": true
+      }
     ]
   },
   "extends": ["eslint:recommended", "airbnb-base"]
