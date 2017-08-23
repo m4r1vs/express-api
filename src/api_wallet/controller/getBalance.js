@@ -31,7 +31,6 @@ const getBalance = (req, res) => {
 
     // Respond with the balance if recieved. Example: {"amount":42}
     if (body) res.json(body);
-    // TODO: Better error handling with codes etc.
     else res.status(200).json({ error: "NO_BODY_RECIEVED_FROM_WALLET" });
   });
 };
