@@ -15,6 +15,7 @@ const getBalance = (req, res) => {
     method: 'GET',
     url: 'https://api.budgetbakers.com/api/v1/balance',
     headers: {
+      'Content-Type': 'application/json',
       'X-Token': config.walletCredentials.token, // Token from Config.js
       'X-User': config.walletCredentials.mail // Email from Config.js
     }
@@ -30,7 +31,7 @@ const getBalance = (req, res) => {
     }
 
     // Respond with the balance if recieved. Example: {"amount":42}
-    if (body) res.json(body);
+    if (body) res.json(JSON.parse(body));
     else res.status(200).json({ error: "NO_BODY_RECIEVED_FROM_WALLET" });
   });
 };
