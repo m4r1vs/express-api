@@ -10,6 +10,10 @@ module.exports = (app) => {
   app.route('/wallet/get-balance/')
     .get(walletApi.getBalance);
 
+  // handled by /api_wallet/controller/getBalance.js:
+  app.route('/wallet/update-crypto/')
+    .post(walletApi.updateCrypto);
+
   // handled by /api_teamspeak/controller/getDonations.js:
   app.route('/teamspeak/get-donations/')
     .get(teamspeakApi.getDonations);

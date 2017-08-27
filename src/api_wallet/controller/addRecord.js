@@ -61,8 +61,8 @@ const addRecord = (req, res) => {
 
     const bodySend = [{ // Wallet API needs these values
       categoryId: getCategoryId(categoryQuery), // transformed category
-      accountId: "dae7663b-42e9-4ac5-95cd-d32e8802a84b", // It's cash
-      currencyId: "1fb57c46-e162-4db3-8c31-53c602505e80", // €€€
+      accountId: "e962a3e8-6b64-468a-9cfd-9088fae28b0f", // It's cash
+      currencyId: "caa14f3d-719e-4baa-96dd-daf8d4d13689", // CAD$
       amount: req.query.amount, // How much?
       paymentType: "cash", // self explaining
       note: "Created with Google Assistant", // Note that it's the API

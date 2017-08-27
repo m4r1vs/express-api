@@ -1,6 +1,6 @@
 {
   "name": "ManiYTde_REST_API",
-  "version": "0.1.0-alpha1",
+  "version": "1.1.0",
   "description": "The official API for my personal projects.",
   "main": "server.js",
   "author": "Marius Niveri",

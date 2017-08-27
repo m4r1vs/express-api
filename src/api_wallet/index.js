@@ -1,5 +1,6 @@
 const addRecord = require('./controller/addRecord.js');
 const getBalance = require('./controller/getBalance.js');
+const updateCrypto = require('./controller/updateCrypto.js');
 
 /*
 * Collection of the different functions of the wallet api.
@@ -8,7 +9,8 @@ const getBalance = require('./controller/getBalance.js');
 
 const walletApi = {
   addRecord,
-  getBalance
+  getBalance,
+  updateCrypto
 };
 
 module.exports = walletApi;
