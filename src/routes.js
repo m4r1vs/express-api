@@ -1,5 +1,6 @@
 const walletApi = require('./api_wallet');
 const teamspeakApi = require('./api_teamspeak');
+const cafMenuApi = require('./api_sdss_caf_menu');
 
 module.exports = (app) => {
   // handled by /api_wallet/controller/addRecord.js:
@@ -17,4 +18,7 @@ module.exports = (app) => {
   // handled by /api_teamspeak/controller/getDonations.js:
   app.route('/teamspeak/get-donations/')
     .get(teamspeakApi.getDonations);
+
+  app.route('/caf-menu/get-menu')
+    .get(cafMenuApi.getMenu);
 };

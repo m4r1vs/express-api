@@ -3,11 +3,13 @@ const config = require('../../../config.js');
 const helper = require('../../helpers');
 
 const getDonations = (req, res) => {
+
   /*
   * This function gets fired when /teamspeak/get-donation-amount/ is requested
   * and returns the overall balance of all accounts.
   */
 
+  const isBrowserReq = req.query.from === 'browser';
   helper.log(`Request to access ${req.url}`, 36);
 
   request({ // Use 3rd party libary, vanilla can be complicated
@@ -27,15 +29,18 @@ const getDonations = (req, res) => {
 
     if (parsedBody.datas.items) {
       if (parsedBody.message === 'success') {
-        let data = "\n";
-        let amount = 16;
-        for (let i = 0, len = parsedBody.datas.items.length; i < len; i++) {
-          data += `\n- Danke an [color=purple]${parsedBody.datas.items[i].parameters.username}[/color][color=#4A494F] für ${parsedBody.datas.items[i].parameters.amount} Euro [color=red]♥[/color]`;
-          amount += parsedBody.datas.items[i].parameters.amount;
+        if (isBrowserReq) res.json(parsedBody.datas);
+        else {
+          let data = "\n";
+          let amount = 16;
+          for (let i = 0, len = parsedBody.datas.items.length; i < len; i++) {
+            data += `\n- Danke an [color=purple]${parsedBody.datas.items[i].parameters.username}[/color][color=#4A494F] für ${parsedBody.datas.items[i].parameters.amount} Euro [color=red]♥[/color]`;
+            amount += parsedBody.datas.items[i].parameters.amount;
+          }
+          data += "\n- Danke an [color=purple]slayR[/color][color=#4A494F] für 7 Euro [color=red]♥[/color]";
+          data += "\n- Danke an [color=purple]Maxi99[/color][color=#4A494F] für 9 Euro [color=red]♥[/color]";
+          res.json({ string: data, amount });
         }
-        data += "\n- Danke an [color=purple]slayR[/color][color=#4A494F] für 7 Euro [color=red]♥[/color]";
-        data += "\n- Danke an [color=purple]Maxi99[/color][color=#4A494F] für 9 Euro [color=red]♥[/color]";
-        res.json({ string: data, amount });
       } else {
         res.status(200).json({ error: "ERROR_ON_TEPEEE_SERVER" });
       }
